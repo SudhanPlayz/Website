@@ -26,6 +26,14 @@ body {
   animation: blink 1s infinite;
 }
 
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Animations */
 @keyframes blink {
   0% {
     opacity: 0;
@@ -42,9 +50,36 @@ body {
   }
 }
 
-footer{
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+/* Terminal ;-; */
+#terminal{
+  border-color: #222222;
+  color: white;
+  margin-bottom: 50px;
+  position: relative;
+  overflow-y: auto;
+  flex: 1;
+}
+
+#user{
+  color: #45c43a;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+input[type="text"]
+{
+    background: transparent;
+    border: none;
+    outline-width: 0;
+    height:200px;
+}
+
+#command-input{
+  color: inherit;
+  width: 75%;
+  height: 90%;
+}
+
+.command-response{
+  margin-left: 10px;
 }

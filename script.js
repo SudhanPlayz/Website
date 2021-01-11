@@ -8,6 +8,7 @@ function sleep(milliseconds) {
 }
 
 $(document).ready(async function () {
+  $("#terminal").hide()
   let Console = $("#console");
   await Type("Loading...", 300);
   setTimeout(async function(){
@@ -16,6 +17,16 @@ $(document).ready(async function () {
     await Type("Thanks for coming here 🤗", 120);
     setTimeout(function(){
       Continue()
+      $("footer").hide()
+      $("footer").append(`<h1 class="WhiteText">Social Media:</h1>
+      <span class="FooterIcons" color="white" style="font-size: 40px">
+        <a href="https://discord.gg/a9SHDpD"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com/CodingWithSudhan"><i class="fab fa-youtube"></i></a>
+        <a href="https://github.com/SudhanPlayz"><i class="fab fa-github"></i></a>
+      </span>
+      <br>
+      <span class="WhiteText">Made by Sudhan &lt;3 </span>`)
+      $("footer").show('slow');
     }, 1500)
   }, 3500);
 
@@ -24,16 +35,80 @@ $(document).ready(async function () {
     setTimeout(async function(){
       await Type("and more!", 100, "Im Sudhan, 14 year old developer who loves to code with Javascript <br>")
       setTimeout(async function(){
-        await Type("There is a cool update coming on this website soon", 100)
-        setTimeout(async function(){
-          await Type("... and thanks for waiting these much time lol", 125, "There is a cool update coming on this website soon")
+        await Type("Opening Terminal...", 100)
+        setTimeout(function(){
+          OpenTerminal()
         }, 5000)
-      }, 10000)
+      }, 7000)
     }, 2500)
   }
 
+  async function OpenTerminal(){
+    //Opening Terminal
+    await Type("terminal.exe", 120)
+    document.title = "terminal.exe"
+    $('link[rel=icon]').attr('href', '/Console.png');
+    $("#terminal").append(`
+    <div id="deadCommands">
+    <span class="command-response">So i made this ubuntu terminal using my html,css,js skills. <br><span class="command-response"></span>Please add a star on <a href="https://github.com/SudhanPlayz/Website">GitHub</a>! Thank you for using this trash terminal 😁</span>
+  </div>
+  <div id="command">
+    <span id="user">root@SudhanPC:~$</span>
+    <input id="command-input" type="text">
+  </div>
+`)
+    $("#terminal").show()
+
+    //So the terminal is here ;-;
+    function addDeadCommand(command, CommandResponse){
+      if(command === "clear")return
+      $("#command-input").val("")
+      $("#deadCommands").append(`
+      <div>
+      <span id="user">root@SudhanPC:~$</span>
+      <span>${command}</span>
+      <br>
+      <span class="command-response">${CommandResponse}</span>
+    </div>
+`)
+    }
+
+    $("#command-input").on('keyup', async function (e) {
+      if (e.key === 'Enter' || e.keyCode === 13) {
+        //You just pressed the enter key so its time to make another thinggy LMAFO
+        let command = $("#command-input").val()
+        let CommandResponse = await RunCommand(command)
+        addDeadCommand(command, CommandResponse)
+      }
+    });
+  }
+
+  //Making commands here
+  async function RunCommand(Command){
+    Command.replace("<br>", '<span class="command-response"></span>')
+    let args = Command.split(" ")//this called as args lol
+    let command = args[0]
+    args.shift()
+
+    if(command === "help"){
+      return `All Commands here you are running are case sensitive<br><span class="command-response">help, clear, sudhan, echo</span>`
+    }else if(command === "clear"){
+      $("#deadCommands").html("")
+      $("#command-input").val("")
+    }else if(command === "sudhan"){
+      let NiceWords = ["Sudhan is epic", "Sudhan coded this", "Sudhan is OP", "Sudhan says ';-;'"]
+      let word = NiceWords[Math.floor(Math.random() * NiceWords.length)];
+      return word
+    }else if(command === "echo"){
+      if(args.length === 0)return "There is nothing to repeat what you say try using 'echo Hello World!'"
+      else return args.join(" ")
+    }else return `Command: ${command} not found. Please use help to recieve all commands`
+  }
+
+  //Note: This is completly made by me fr more than 3 hours of work ;-;
   async function Type(text, duration, defaultText) {
     if(!defaultText)defaultText = ""
+    //Sending a promise so we can use await
     return new Promise(function (resolutionFunc, rejectionFunc)  {
       text = [defaultText].concat(text.split(""))
       var i = 0;
