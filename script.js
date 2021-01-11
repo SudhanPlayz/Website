@@ -102,6 +102,8 @@ $(document).ready(async function () {
     }else if(command === "echo"){
       if(args.length === 0)return "There is nothing to repeat what you say try using 'echo Hello World!'"
       else return args.join(" ")
+    }else if(command === "sudo"){
+      return "Why you wanted to use sudo when you are already on root ;-;"
     }else return `Command: ${command} not found. Please use help to recieve all commands`
   }
 
