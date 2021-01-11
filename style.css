@@ -1,0 +1,50 @@
+body {
+  font-family: Ubuntu Mono, monospace;
+  vertical-align: baseline;
+  background: black;
+  letter-spacing: 0.5px;
+  font-size: 16px;
+}
+
+.BlueText{
+  color: #81f3fd;
+  text-shadow: 0 0.1rem 1rem rgba(129, 243, 253, 0.75);
+}
+
+.WhiteText{
+  color: #effdff;
+  text-shadow: 0 0.1rem 1rem rgba(239,253,255,.95);
+}
+
+.content{
+  text-align: center;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.WaitingAnim {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+  50.1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
