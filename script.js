@@ -12,7 +12,7 @@ $(document).ready(async function () {
   await Type("Loading...", 300);
   setTimeout(async function(){
     document.title = "SudhanPlayz Website 🤗"
-    $('link[rel=icon]').attr('href', './Logo.png');
+    $('link[rel=icon]').attr('href', '/Logo.png');
     await Type("Thanks for coming here 🤗", 120);
     setTimeout(function(){
       Continue()
