@@ -18,6 +18,7 @@ body {
 
 .content{
   text-align: center;
+  vertical-align: middle;
   margin-left: 40px;
   margin-right: 40px;
 }
@@ -33,7 +34,31 @@ footer{
   width: 100%;
 }
 
+#FlyingConsole{
+  animation: FlyingConsole 10s infinite;
+}
+
+#logo{
+  text-align: center;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ConsoleImage{
+  text-align: center;
+  display: inline-block;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+}
+
 /* Animations */
+/* this kinda my first css animation ever made lol */
 @keyframes blink {
   0% {
     opacity: 0;
@@ -47,6 +72,48 @@ footer{
   }
   100% {
     opacity: 1;
+  }
+}
+
+/* The animation which took me a long to do it ;-; */
+@keyframes FlyingConsole{
+  0%{
+    padding-left: 0;
+  }
+
+  12.5%{
+    padding-top: 25%
+  }
+
+  25%{
+    padding-top: 0%
+  }
+
+  37.5%{
+    padding-top: 25%
+  }
+
+  50%{
+    padding-left: 80%;
+    padding-bottom: 0%;
+    padding-top: 0%
+  }
+
+  62.5%{
+    padding-bottom: 25%;
+  }
+
+  75%{
+    padding-bottom: 0%;
+  }
+
+  87.5%{
+    padding-bottom: 25%
+  }
+
+  100%{
+    padding-top: 0;
+    padding-bottom: 0%
   }
 }
 

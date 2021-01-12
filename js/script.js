@@ -8,12 +8,18 @@ function sleep(milliseconds) {
 }
 
 $(document).ready(async function () {
+  $("#logo").hide()
+  $("#logo").attr("src", "/assets/Logo.jpg")
+  $("#FlyingConsole").hide()
+  $("#FlyingConsole").attr("src", "/assets/Console.png")
   $("#terminal").hide()
   let Console = $("#console");
-  await Type("Loading...", 300);
+  await Type("Loading...", 350);
+  $("#FlyingConsole").show("slow")
   setTimeout(async function(){
     document.title = "SudhanPlayz Website 🤗"
-    $('link[rel=icon]').attr('href', '/Logo.jpg');
+    $('link[rel=icon]').attr('href', '/assets/Logo.jpg');
+    $("#FlyingConsole").hide("slow")
     await Type("Thanks for coming here 🤗", 120);
     setTimeout(function(){
       Continue()
@@ -31,10 +37,12 @@ $(document).ready(async function () {
   }, 3500);
 
   async function Continue(){
+    $("#logo").show("slow")
     await Type("Im Sudhan, 14 year old developer who loves to code with Javascript", 75)
     setTimeout(async function(){
       await Type("and more!", 100, "Im Sudhan, 14 year old developer who loves to code with Javascript <br>")
       setTimeout(async function(){
+        $("#logo").hide("slow")
         await Type("Opening Terminal...", 100)
         setTimeout(function(){
           OpenTerminal()
@@ -46,8 +54,12 @@ $(document).ready(async function () {
   async function OpenTerminal(){
     //Opening Terminal
     await Type("terminal.exe", 120)
+    $("footer").hide("slow")
+    $("#ConsoleImage").hide("fast")
+    $("#ConsoleImage").attr("src", "/assets/Console.png")
+    $("#ConsoleImage").show("slow")
     document.title = "terminal.exe"
-    $('link[rel=icon]').attr('href', '/Console.png');
+    $('link[rel=icon]').attr('href', '/assets/Console.png');
     $("#terminal").append(`
     <div id="deadCommands">
     <span class="command-response">So i made this ubuntu terminal using my html,css,js skills. <br><span class="command-response"></span>Please add a star on <a href="https://github.com/SudhanPlayz/Website">GitHub</a>! Thank you for using this trash terminal 😁</span>
@@ -57,7 +69,7 @@ $(document).ready(async function () {
     <input id="command-input" type="text">
   </div>
 `)
-    $("#terminal").show()
+    $("#terminal").show("slow")
 
     //So the terminal is here ;-;
     function addDeadCommand(command, CommandResponse){
@@ -75,8 +87,9 @@ $(document).ready(async function () {
 
     $("#command-input").on('keyup', async function (e) {
       if (e.key === 'Enter' || e.keyCode === 13) {
-        //You just pressed the enter key so its time to make another thinggy LMAFO
+        //You just pressed the enter key so its time to run the command ;-;
         let command = $("#command-input").val()
+        if(!command || command === "")return
         let CommandResponse = await RunCommand(command)
         addDeadCommand(command, CommandResponse)
       }
@@ -96,7 +109,7 @@ $(document).ready(async function () {
       $("#deadCommands").html("")
       $("#command-input").val("")
     }else if(command === "sudhan"){
-      let NiceWords = ["Sudhan is epic", "Sudhan coded this", "Sudhan is OP", "Sudhan says ';-;'"]
+      let NiceWords = ["Sudhan is epic", "Sudhan was built/coded this using html, css, js, jquery, font awesome icons", "Sudhan is OP", "Sudhan says ';-;'"]
       let word = NiceWords[Math.floor(Math.random() * NiceWords.length)];
       return word
     }else if(command === "echo"){
@@ -104,6 +117,16 @@ $(document).ready(async function () {
       else return args.join(" ")
     }else if(command === "sudo"){
       return "Why you wanted to use sudo when you are already on root ;-;"
+    }else if(command === "set"){
+      if(args[0] === "title"){
+        args.shift()
+        let title = args.join(" ")
+        document.title = title
+        await Type(title, 100);
+        $("#ConsoleImage").attr("src", "/assets/Console.png")
+        $("#ConsoleImage").show("slow")
+        return "Successfully changed title to "+title
+      }else return "set Commands are title | Use it by like set title <args>"
     }else return `Command: ${command} not found. Please use help to recieve all commands`
   }
 
@@ -120,7 +143,7 @@ $(document).ready(async function () {
         if (i === text.length) return resolutionFunc();
         i++;
         setTimeout(function () {
-          Console.html(did + '<span class="WaitingAnim">_</span>');
+          Console.html('<img width="35" id="ConsoleImage"><span class="command-response"></span>'+did + '<span class="WaitingAnim">_</span>');
           ThisTimeout();
         }, duration);
       };
