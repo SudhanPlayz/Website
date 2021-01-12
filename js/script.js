@@ -20,7 +20,7 @@ $(document).ready(async function () {
     document.title = "SudhanPlayz Website 🤗"
     $('link[rel=icon]').attr('href', '/assets/Logo.jpg');
     $("#FlyingConsole").hide("slow")
-    await Type("Thanks for coming here 🤗", 120);
+    await Type("Thanks for visiting this website 🤗", 120);
     setTimeout(function(){
       Continue()
       $("footer").hide()
