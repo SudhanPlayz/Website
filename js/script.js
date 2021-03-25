@@ -109,7 +109,7 @@ $(document).ready(async function () {
       $("#deadCommands").html("")
       $("#command-input").val("")
     }else if(command === "sudhan"){
-      let NiceWords = ["Sudhan is epic", "Sudhan was built/coded this using html, css, js, jquery, font awesome icons", "Sudhan is OP", "Sudhan says ';-;'"]
+      let NiceWords = ["Sudhan is epic", "Sudhan had built/coded this using html, css, js, jquery, font awesome icons", "Sudhan is OP", "Sudhan says ';-;'"]
       let word = NiceWords[Math.floor(Math.random() * NiceWords.length)];
       return word
     }else if(command === "echo"){
