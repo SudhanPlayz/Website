@@ -62,7 +62,7 @@ $(document).ready(async function () {
     $('link[rel=icon]').attr('href', '/assets/Console.png');
     $("#terminal").append(`
     <div id="deadCommands">
-    <span class="command-response">So i made this ubuntu terminal using my html,css,js skills. <br><span class="command-response"></span>Please add a star on <a href="https://github.com/SudhanPlayz/Website">GitHub</a>! Thank you for using this trash terminal 😁</span>
+    <span class="command-response">So I made this ubuntu terminal using my html,css,js skills. <br><span class="command-response"></span>Please add a star on <a href="https://github.com/SudhanPlayz/Website" style="color: pink;text-decoration: none;">GitHub</a>! Thank you for using this trash terminal 😁</span>
   </div>
   <div id="command">
     <span id="user">root@SudhanPC:~$</span>
@@ -109,7 +109,7 @@ $(document).ready(async function () {
       $("#deadCommands").html("")
       $("#command-input").val("")
     }else if(command === "sudhan"){
-      let NiceWords = ["Sudhan is epic", "Sudhan had built/coded this using html, css, js, jquery, font awesome icons", "Sudhan is OP", "Sudhan says ';-;'"]
+      let NiceWords = ["Sudhan is epic", "Sudhan has built/coded this using html, css, js, jquery, font awesome icons", "Sudhan is OP", "Sudhan says ';-;'"]
       let word = NiceWords[Math.floor(Math.random() * NiceWords.length)];
       return word
     }else if(command === "echo"){
