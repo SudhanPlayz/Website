@@ -1,12 +1,7 @@
 function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if (new Date().getTime() - start > milliseconds) {
-      break;
-    }
-  }
+  return new Promise(res => setTimeout(res, milliseconds))
 }
-
+$("#pog").hide()
 $(document).ready(async function () {
   $("#logo").hide()
   $("#logo").attr("src", "/assets/Logo.jpg")
@@ -15,6 +10,12 @@ $(document).ready(async function () {
   $("#terminal").hide()
   let Console = $("#console");
   await Type("Loading...", 350);
+  await Type("New website is coming on the way...", 500)
+  await sleep(2000)
+  await Type("If you are bored you can check out the website below", 1500)
+  $("#pog").show("fade")
+
+  /* i cant forgot my old beautifull coding so...
   $("#FlyingConsole").show("slow")
   setTimeout(async function(){
     document.title = "SudhanPlayz Website 🤗"
@@ -129,6 +130,8 @@ $(document).ready(async function () {
       }else return "set Commands are title | Use it by like set title <args>"
     }else return `Command: ${command} not found. Please use help to recieve all commands`
   }
+
+  */
 
   //Note: This is completly made by me fr more than 3 hours of work ;-;
   async function Type(text, duration, defaultText) {
