@@ -10,9 +10,9 @@ $(document).ready(async function () {
   $("#terminal").hide()
   let Console = $("#console");
   await Type("Loading...", 350);
-  await Type("New website is coming on the way...", 250)
+  await Type("New website is coming on the way...", 100)
   await sleep(2000)
-  await Type("If you are bored you can check out the website below xD", 150)
+  await Type("If you are bored you can check out the website below xD", 100)
   $("#pog").show("fade")
 
   /* i cant forgot my old beautifull coding so...
